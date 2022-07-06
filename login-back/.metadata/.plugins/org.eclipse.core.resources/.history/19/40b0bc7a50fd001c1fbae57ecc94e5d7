@@ -1,0 +1,5 @@
+package com.login.data;
+
+public class UsuarioData {
+
+}
