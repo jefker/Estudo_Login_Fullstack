@@ -52,9 +52,9 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 	
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request,
-												HttpServletResponse response,
-												FilterChain chain,
-												Authentication authResult) throws IOException, ServletException {
+											HttpServletResponse response,
+											FilterChain chain,
+											Authentication authResult) throws IOException, ServletException {
 	
 		UsuarioData usuarioData = (UsuarioData) authResult.getPrincipal();
 		
@@ -63,7 +63,7 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 				.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRACAO))
 				.sign(Algorithm.HMAC512(TOKEN_SENHA));
 		
-		response.addHeader("Access-Control-Allow-Origin", "*");
+//		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().write(token);
 		response.getWriter().flush();
 	}

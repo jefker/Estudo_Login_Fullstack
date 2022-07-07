@@ -27,7 +27,7 @@ public class DetalheUsuarioServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("Usuário [" + username + "] não encontrado");
 		}
 		
-		return new UsuarioData(null);
+		return new UsuarioData(usuario);
 	}
 
 }
