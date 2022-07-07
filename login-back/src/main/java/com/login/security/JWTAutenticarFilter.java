@@ -24,7 +24,6 @@ import com.login.model.LoginModel;
 public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 
 	public static final int TOKEN_EXPIRACAO = 900_000;
-	
 	public static final String TOKEN_SENHA = "800dbad0-db68-45e8-93ef-162e7f2a9fd4";
 	
 	private final AuthenticationManager authenticationManager;
@@ -33,6 +32,7 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 		this.authenticationManager = authenticationManager;
 	}
 	
+	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request,
 												HttpServletResponse response) throws AuthenticationException {
 		try {
@@ -58,11 +58,12 @@ public class JWTAutenticarFilter extends UsernamePasswordAuthenticationFilter {
 	
 		UsuarioData usuarioData = (UsuarioData) authResult.getPrincipal();
 		
-		String token = JWT.create().
-				withSubject(usuarioData.getUsername())
+		String token = JWT.create()
+				.withSubject(usuarioData.getUsername())
 				.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRACAO))
 				.sign(Algorithm.HMAC512(TOKEN_SENHA));
 		
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().write(token);
 		response.getWriter().flush();
 	}
