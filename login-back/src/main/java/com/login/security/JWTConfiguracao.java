@@ -15,10 +15,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.login.service.DetalheUsuarioServiceImpl;
 
-import lombok.RequiredArgsConstructor;
 
-
-//@Configuration
+@Configuration
 @EnableWebSecurity
 public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
 	
@@ -30,7 +28,6 @@ public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
 		this.passwordEncoder = passwordEncoder;
 	}
 	
-//	@SuppressWarnings("deprecation")
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(usuarioService).passwordEncoder(passwordEncoder);
@@ -39,7 +36,7 @@ public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/login", "/api/usuario/salvar").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.addFilter(new JWTAutenticarFilter(authenticationManager()))

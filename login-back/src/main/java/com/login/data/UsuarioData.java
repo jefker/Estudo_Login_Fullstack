@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.login.model.LoginModel;
 
 public class UsuarioData implements UserDetails {
+
+	private static final long serialVersionUID = 1L;
 	
 	private final Optional<LoginModel> usuario;
 	
@@ -20,13 +22,15 @@ public class UsuarioData implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return new ArrayList<>();
 	}
-	
-	public String getSenha() {
-		return usuario.orElse(new LoginModel()).getSenha();
+
+	@Override
+	public String getUsername() {
+		return usuario.orElse(new LoginModel()).getLogin();
 	}
 	
-	public String getUsuario() {
-		return usuario.orElse(new LoginModel()).getLogin();
+	@Override
+	public String getPassword() {
+		return usuario.orElse(new LoginModel()).getSenha();
 	}
 	
 	public boolean isAccountNonExpired() {
@@ -43,18 +47,6 @@ public class UsuarioData implements UserDetails {
 	
 	public boolean isEnabled() {
 		return true;
-	}
-
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
