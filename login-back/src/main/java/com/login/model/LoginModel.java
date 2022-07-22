@@ -21,7 +21,9 @@ public class LoginModel {
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
 	
-	private String login;
+	private String nome;
+	
+	private String email;
 	
 	private String senha;
 	

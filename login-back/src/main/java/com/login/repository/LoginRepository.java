@@ -11,6 +11,6 @@ import com.login.model.LoginModel;
 @Repository
 public interface LoginRepository extends JpaRepository<LoginModel, UUID> {
 
-	Optional<LoginModel> findByLogin(String username);
+	Optional<LoginModel> findByEmail(String username);
 
 }
