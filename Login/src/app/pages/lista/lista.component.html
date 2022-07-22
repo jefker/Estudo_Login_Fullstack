@@ -1,0 +1,35 @@
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div class="tabela scalein animation-duration-100 animation-iteration">
+    <p-table [value]="usuarios" responsiveLayout="scroll" id="htmlData" #htmlData>
+        <ng-template pTemplate="caption">
+        <div class="flex table-header">
+            <div class="flex justify-content-start col-4">
+                <button pButton pRipple type="button" routerLink="" label="Retornar" class="p-button-outlined"></button>
+            </div>
+            <div class="col-4 mt-3 text-center p-0">Lista de Usuários</div>
+            <div class="flex justify-content-end col-4"> 
+                <button pButton pRipple type="button" label="Novo Usuário" icon="pi pi-fw pi-user-plus" (click)="showDynamicDialog('cadastrar')" class="font-medium p-button-secondary"></button>
+            </div>
+        </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th >Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-usuario>
+            <tr>
+                <td>{{usuario.nome }}</td>
+                <td>{{usuario.email }}</td>
+                <td>{{usuario.senha | senha}}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="botao p-button-rounded p-button-secondary" (click)="showDynamicDialog('editar', usuario.id)"></button>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="botao p-button-rounded p-button-danger" (click)="confirmacaoDialog('deletar', usuario.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

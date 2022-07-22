@@ -1,13 +1,11 @@
-<div class="login">
-    <div class="flex">
+<div class="login scalein animation-duration-100 animation-iteration">
+    <div class="home">
         <h1>Fazer login</h1>
         <p>Use sua conta</p>
         
         <div class="form">
             <div class="field">
-                <input id="usuario" type="username" [(ngModel)]="usuario.login" pInputText placeholder="Email"/>
-                <br>
-                <a href=""><small id="username1-help" class="block">Esqueceu seu e-mail?</small></a>
+                <input id="usuario" type="username" [(ngModel)]="usuario.email" pInputText placeholder="Email"/>
             </div>
             <div class="field">
                 <input id="senha" type="password" [(ngModel)]="usuario.senha" pInputText placeholder="Senha"/>
@@ -15,7 +13,7 @@
                 <a href=""><small id="password-help" class="block">Esqueceu sua senha?</small></a>
             </div>
         </div>
-        <button pButton pRipple type="button" label="Criar Conta" class="criarbutton p-button-outlined"></button>
+        <button pButton pRipple type="button" routerLink="cadastrar" label="Criar Conta" class="criarbutton p-button-outlined"></button>
         <p-button type="p-button" (click)="login()" label="Entrar" class="entrarbutton"></p-button>
     </div>
 </div>

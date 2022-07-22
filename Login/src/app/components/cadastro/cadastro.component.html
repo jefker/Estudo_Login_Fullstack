@@ -1,0 +1,22 @@
+<div class="login scalein animation-duration-100 animation-iteration">
+    <div class="cadastro">
+        <div class="form">
+            <form [formGroup]="formGroup">
+                <div class="field">
+                    <input pInputText type="text" formControlName="nome" placeholder="Nome"/>
+                </div>
+                <div class="field">
+                    <input pInputText type="text" formControlName="email" placeholder="Email"/>
+                </div>
+                <div class="field">
+                  <p-password formControlName="senha" placeholder="Senha"></p-password>
+                </div>
+                <div class="field">
+                  <p-password formControlName="senha" placeholder="Confirmar senha"></p-password>
+              </div>
+            </form>
+        </div>
+        <button pButton pRipple type="button" routerLink="" label="Retornar" class="retornarbutton p-button-outlined"></button>
+        <p-button type="p-button" (click)="salvarDados()" label="Criar" class="criarbutton" [disabled]="!formGroup.valid"></p-button>
+    </div>
+</div>

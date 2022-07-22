@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/interface/iusuario';
 import { LoginServiceService } from 'src/app/service/login-service.service';
 
@@ -12,13 +13,25 @@ import { LoginServiceService } from 'src/app/service/login-service.service';
 export class LoginComponent implements OnInit {
   usuario = {} as IUsuario;
 
-  constructor(private loginService: LoginServiceService) { }
+  constructor(
+    private loginService: LoginServiceService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
   
   public login() {
-    this.loginService.login(this.usuario);
+    this.loginService.login(this.usuario).subscribe(data => {
+      console.log(JSON.parse(JSON.stringify(data)));
+      sessionStorage.setItem('token', data)
+      this.routerDados()
+    })
   }
+
+  routerDados() {
+    this.router.navigate(['/lista']);
+  }
+
 }
 
