@@ -29,8 +29,8 @@ public class LoginService {
 	
 	public LoginModel patchLogin(UUID id, LoginModel request) {
 		return loginRepository.findById(id).map(data -> {
-			if(request.getLogin() != null ) {
-				data.setLogin(request.getLogin());
+			if(request.getEmail() != null ) {
+				data.setEmail(request.getEmail());
 			}
 			if(request.getSenha() != null) {
 				data.setSenha(request.getSenha());
