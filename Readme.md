@@ -15,5 +15,7 @@
     <li>Realizar CRUDS de usuário</li>
     <li>Login com autenticação JWT no Spring Boot</li>
     <li>Login com autenticação JWT no Angular</li>
+    <li>Toast apresentando respostas de Status Http</li>
+    <li>Exibir loading enquanto a requisição está em andamento</li>
 </ol>
 <br>
