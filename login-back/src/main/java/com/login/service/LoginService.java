@@ -15,6 +15,10 @@ public class LoginService {
 	@Autowired
 	private LoginRepository loginRepository;
 	
+	public LoginService(LoginRepository loginRepository) {
+		this.loginRepository = loginRepository;
+	}
+	
 	public List<LoginModel> getLogin (){
 		return loginRepository.findAll();
 	}
