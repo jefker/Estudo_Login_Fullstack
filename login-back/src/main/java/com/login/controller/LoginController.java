@@ -1,7 +1,6 @@
 package com.login.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,13 +47,13 @@ public class LoginController {
 	}
 	
 	@PatchMapping(value = "/editar/{id}")
-	public ResponseEntity<LoginModel> patchLogin(@PathVariable UUID id, @RequestBody LoginModel request){
+	public ResponseEntity<LoginModel> patchLogin(@PathVariable Integer id, @RequestBody LoginModel request) throws Exception{
 		LoginModel loginModel = loginService.patchLogin(id, request);
 		return new ResponseEntity<LoginModel>(loginModel, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/deletar/{id}")
-	public void deleteLogin(@PathVariable UUID id) {
+	public void deleteLogin(@PathVariable Integer id) {
 		loginService.deleteLogin(id);
 	}
 }

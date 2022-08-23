@@ -1,13 +1,9 @@
 package com.login.model;
 
-import java.util.UUID;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Type;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,11 +11,13 @@ import lombok.Setter;
 @Getter @Setter
 @Entity(name="login")
 public class LoginModel {
-
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Type(type = "org.hibernate.type.UUIDCharType")
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	private Integer id;
 	
 	private String nome;
 	
