@@ -1,7 +1,6 @@
 package com.login.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,11 +26,11 @@ public class LoginService {
 		return loginRepository.save(request);
 	}
 	
-	public void deleteLogin(UUID id) {
+	public void deleteLogin(Integer id) {
 		loginRepository.deleteById(id);
 	}
 	
-	public LoginModel patchLogin(UUID id, LoginModel request) {
+	public LoginModel patchLogin(Integer id, LoginModel request) throws Exception {
 		return loginRepository.findById(id).map(data -> {
 			if(request.getEmail() != null ) {
 				data.setEmail(request.getEmail());
