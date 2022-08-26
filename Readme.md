@@ -11,11 +11,12 @@
 <ol>
     <li>Construção de uma tela de login em Angular CLI</li>
     <li>Estilazação da tela com o framework PrimeNG</li>
-    <li>Consumir API de "Usuários" cadastrados</li>
+    <li>Consumir API de usuários cadastrados</li>
     <li>Realizar CRUDS de usuário</li>
     <li>Login com autenticação JWT no Spring Boot</li>
     <li>Login com autenticação JWT no Angular</li>
     <li>Toast apresentando respostas de Status Http</li>
     <li>Exibir loading enquanto a requisição está em andamento</li>
+    <li>Relização de testes com JUnit e Mockito no Spring</li>
 </ol>
 <br>
