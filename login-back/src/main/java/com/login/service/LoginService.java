@@ -30,16 +30,18 @@ public class LoginService {
 		loginRepository.deleteById(id);
 	}
 	
-	public LoginModel patchLogin(Integer id, LoginModel request) throws Exception {
-		return loginRepository.findById(id).map(data -> {
-			if(request.getEmail() != null ) {
-				data.setEmail(request.getEmail());
-			}
-			if(request.getSenha() != null) {
-				data.setSenha(request.getSenha());
-			}
-			LoginModel updated = loginRepository.save(data);
-			return updated;
+	public LoginModel patchLogin(Integer id, LoginModel loginModel) throws Exception {
+		return loginRepository.findByEmail(loginModel.getEmail())
+				.map(data -> {
+							if(loginModel.getEmail() != null ) {
+								data.setEmail(loginModel.getEmail());
+							}
+							if(loginModel.getSenha() != null) {
+								data.setSenha(loginModel.getSenha());
+							}
+							LoginModel updated = loginRepository.save(data);
+							return updated;
 		}).orElseThrow();
 	}
+	
 }
