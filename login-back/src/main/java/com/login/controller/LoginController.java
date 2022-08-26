@@ -26,6 +26,7 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
+	
 	private final PasswordEncoder password;
 	
 	public LoginController(LoginService loginService, PasswordEncoder password) {
