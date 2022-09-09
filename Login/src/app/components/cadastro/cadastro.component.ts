@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/interface/iusuario';
@@ -10,7 +10,7 @@ import { LoginServiceService } from 'src/app/service/login-service.service';
   styleUrls: ['./cadastro.component.css']
 })
 
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
 
   formGroup: FormGroup;
 
@@ -24,9 +24,6 @@ export class CadastroComponent implements OnInit {
         senha: this.fb.control('', [Validators.required])
       });
     }
-
-  ngOnInit(): void {
-  }
 
   salvarDados(): void {
     const valor = this.formGroup.value;

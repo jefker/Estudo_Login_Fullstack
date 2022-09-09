@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/interface/iusuario';
 import { LoginServiceService } from 'src/app/service/login-service.service';
@@ -10,7 +10,7 @@ import { LoginServiceService } from 'src/app/service/login-service.service';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   usuario = {} as IUsuario;
 
   constructor(
@@ -18,8 +18,6 @@ export class LoginComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
-  }
   
   public login() {
     this.loginService.login(this.usuario).subscribe(data => {

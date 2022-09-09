@@ -110,6 +110,15 @@ describe('ListaComponent', () => {
     expect(listaComponent.dadosSave).toBe(usuarioMock);
   });
 
+  it('showDynamicDialog', () => {
+    listaComponent.usuarios = usuarioListaMock;
+    listaComponent.showDynamicDialog('editar', 'a1');
+    listaComponent.ref?.close(usuarioMock);
+    expect('id').toBe('id');
+    expect(listaComponent.usuario.id).toBe('a1');
+    expect(listaComponent.dadosSave).toBe(usuarioMock);
+  });
+
   it('confirmacaoDialog', () => {
     const spy = spyOn(listaComponent, 'validacaoForm');
 
