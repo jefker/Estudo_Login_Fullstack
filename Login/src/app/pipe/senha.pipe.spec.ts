@@ -1,8 +1,11 @@
 import { SenhaPipe } from './senha.pipe';
 
 describe('SenhaPipe', () => {
-  it('create an instance', () => {
-    const pipe = new SenhaPipe();
-    expect(pipe).toBeTruthy();
+
+  const pipe = new SenhaPipe();
+  
+  it('transformar senha em asteristicos', () => {
+    expect(pipe.transform('12345')).toBe('*****');
   });
+
 });

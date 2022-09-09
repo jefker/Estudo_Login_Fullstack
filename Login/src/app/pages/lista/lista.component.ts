@@ -15,6 +15,7 @@ import { LoginServiceService } from 'src/app/service/login-service.service';
 export class ListaComponent implements OnInit {
 
   usuarios: any[] = [];
+  usuario = {} as IUsuario;
   ref: DynamicDialogRef | undefined;
   id: string = '';
   dadosSave = {} as IUsuario; //request - salvando dados
@@ -50,26 +51,24 @@ export class ListaComponent implements OnInit {
   }
 
   showDynamicDialog(op: string, id?: string) {
-    
-    let usuario = {
+
+    this.usuario = {
       id: "",
       email: "",
       nome: "",
       senha: ""
-    } as IUsuario;
+    };
     
     if (id) {
       this.id = id;
-      usuario = this.usuarios.find(user=>user.id === id);
+      this.usuario = this.usuarios.find(user=>user.id === id);
     };
 
     this.ref = this.dialogService.open(CadastroComponent, {
       header: op === 'cadastrar'? 'Cadastrar Usuário': 'Editar Usuário',
       width: '25vw',
       height: 'auto',
-      data: {
-        usuario: usuario
-      }
+      data: { usuario: this.usuario }
     });
 
     this.ref.onClose.subscribe(dados => {

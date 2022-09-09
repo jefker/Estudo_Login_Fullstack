@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginServiceService {
 
   api = `${environment.api}/api/usuario`;
@@ -30,10 +31,10 @@ export class LoginServiceService {
   }
 
   editarUsuarios(request: IUsuario, id: string) {
-    return this.http.patch<IUsuario[]>(`${this.api}/editar/${id}`, request);
+    return this.http.patch<IUsuario>(`${this.api}/editar/${id}`, request);
   }
 
   removerUsuario(id: string) {
-    return this.http.delete<IUsuario[]>(`${this.api}/deletar/${id}`);
+    return this.http.delete<IUsuario>(`${this.api}/deletar/${id}`);
   }
 }
