@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'senha'
-})
+@Pipe({ name: 'senha' })
 
 export class SenhaPipe implements PipeTransform {
 
